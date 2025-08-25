@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalGuns Forum - California Firearms Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'inter': ['Inter', 'sans-serif'],
+                },
+                colors: {
+                    'primary': '#1F2937',
+                    'secondary': '#374151',
+                    'accent': '#059669',
+                    'warning': '#DC2626',
+                }
+            }
+        }
+    };
+    </script>
+</head>
+<body class="font-inter bg-gray-50 text-gray-900">
+    <!-- @COMPONENT: Header [navigation, user auth, search] -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-primary">CalGuns Forum</h1>
+                        <p class="text-xs text-gray-500">California Firearms Community</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block flex-1 max-w-lg mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Search forums..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" data-implementation="Should implement forum search functionality">
+                        <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="bg-accent text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors" data-event="click:showLoginModal">
+                        Sign In
+                    </button>
+                    <button class="border border-accent text-accent px-4 py-2 rounded-lg hover:bg-accent hover:text-white transition-colors" data-event="click:showRegisterModal">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- Legal Compliance Banner -->
+    <div class="bg-warning text-white py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center text-center">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <span class="font-medium">IMPORTANT: All firearm transfers must be conducted through licensed FFL dealers in accordance with California law. This platform is for listings only.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- @COMPONENT: Sidebar [navigation categories] -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="bg-primary text-white px-4 py-3">
+                        <h2 class="font-semibold">Forum Categories</h2>
+                    </div>
+                    
+                    <div class="p-4 space-y-4">
+                        <div>
+                            <h3 class="font-semibold text-secondary mb-2 flex items-center">
+                                <i class="fas fa-store mr-2 text-accent"></i>
+                                Marketplace (WTS)
+                            </h3>
+                            <ul class="space-y-1 ml-6">
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Handguns</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Long Guns</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Antique Firearms</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Ammunition</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Parts & Accessories</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-secondary mb-2 flex items-center">
+                                <i class="fas fa-search mr-2 text-accent"></i>
+                                Looking For (WTB)
+                            </h3>
+                            <ul class="space-y-1 ml-6">
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Handguns</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Long Guns</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Antique Firearms</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Ammunition</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Parts & Accessories</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-secondary mb-2 flex items-center">
+                                <i class="fas fa-comments mr-2 text-accent"></i>
+                                Discussion
+                            </h3>
+                            <ul class="space-y-1 ml-6">
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">General Discussion</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">CA Gun Laws</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Reviews & Recommendations</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Training & Safety</a></li>
+                                <li><a href="#" class="text-gray-600 hover:text-accent transition-colors">Off Topic</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="mt-6 bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+                    <h3 class="font-semibold text-secondary mb-3">Forum Stats</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Total Members:</span>
+                            <span class="font-medium" data-bind="stats.totalMembers">12,847</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Active Listings:</span>
+                            <span class="font-medium" data-bind="stats.activeListings">1,234</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Posts Today:</span>
+                            <span class="font-medium" data-bind="stats.postsToday">89</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: Sidebar -->
+
+            <!-- @COMPONENT: MainContent [recent posts, categories overview] -->
+            <div class="lg:col-span-3">
+                <!-- Create Post Button -->
+                <div class="mb-6">
+                    <button class="bg-accent text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors font-medium flex items-center" data-event="click:showCreatePostModal">
+                        <i class="fas fa-plus mr-2"></i>
+                        Create New Listing or Post
+                    </button>
+                </div>
+
+                <!-- Category Overview Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- @MAP: categories.map(category => ( -->
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-lg text-primary flex items-center">
+                                <i class="fas fa-handgun mr-2 text-accent"></i>
+                                WTS Handguns
+                            </h3>
+                            <span class="bg-accent text-white text-xs px-2 py-1 rounded-full" data-bind="category.activeCount">42</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Browse available handguns for sale by verified members. All transfers must go through FFL dealers.</p>
+                        <a href="#" class="text-accent hover:text-emerald-700 font-medium text-sm">View all listings →</a>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-lg text-primary flex items-center">
+                                <i class="fas fa-search mr-2 text-accent"></i>
+                                WTB Handguns
+                            </h3>
+                            <span class="bg-accent text-white text-xs px-2 py-1 rounded-full" data-bind="category.activeCount">18</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Members looking to purchase specific handguns. Post your wanted ads here.</p>
+                        <a href="#" class="text-accent hover:text-emerald-700 font-medium text-sm">View all requests →</a>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-lg text-primary flex items-center">
+                                <i class="fas fa-gun mr-2 text-accent"></i>
+                                WTS Long Guns
+                            </h3>
+                            <span class="bg-accent text-white text-xs px-2 py-1 rounded-full" data-bind="category.activeCount">67</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Rifles, shotguns, and other long guns available for sale through licensed dealers.</p>
+                        <a href="#" class="text-accent hover:text-emerald-700 font-medium text-sm">View all listings →</a>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-lg text-primary flex items-center">
+                                <i class="fas fa-comments mr-2 text-accent"></i>
+                                General Discussion
+                            </h3>
+                            <span class="bg-accent text-white text-xs px-2 py-1 rounded-full" data-bind="category.activeCount">156</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Community discussions about firearms, laws, training, and general topics.</p>
+                        <a href="#" class="text-accent hover:text-emerald-700 font-medium text-sm">View discussions →</a>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+
+                <!-- Recent Activity Feed -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div class="border-b border-gray-200 px-6 py-4">
+                        <h2 class="font-semibold text-lg text-primary">Recent Activity</h2>
+                    </div>
+                    
+                    <div class="divide-y divide-gray-100">
+                        <!-- @MAP: recentPosts.map(post => ( -->
+                        <div class="p-6 hover:bg-gray-50 transition-colors" data-mock="true">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-medium">
+                                    <span data-bind="post.author.initials">JD</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="font-medium text-primary" data-bind="post.author.username">John_Doe_CA</span>
+                                        <span class="text-xs bg-accent text-white px-2 py-1 rounded">WTS</span>
+                                        <span class="text-xs text-gray-500" data-bind="post.timestamp">2 hours ago</span>
+                                    </div>
+                                    <h3 class="text-lg font-medium text-primary mb-2 hover:text-accent cursor-pointer" data-bind="post.title">
+                                        Glock 19 Gen 5 - Excellent Condition - Los Angeles Area
+                                    </h3>
+                                    <p class="text-gray-600 text-sm mb-2" data-bind="post.excerpt">
+                                        Selling my Glock 19 Gen 5 in excellent condition. Less than 500 rounds through it. Comes with original case, 3 magazines, and documentation. Must transfer through local FFL...
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                        <span class="flex items-center">
+                                            <i class="fas fa-map-marker-alt mr-1"></i>
+                                            <span data-bind="post.location">Los Angeles, CA</span>
+                                        </span>
+                                        <span class="flex items-center">
+                                            <i class="fas fa-dollar-sign mr-1"></i>
+                                            <span data-bind="post.price">$550</span>
+                                        </span>
+                                        <span class="flex items-center">
+                                            <i class="fas fa-eye mr-1"></i>
+                                            <span data-bind="post.views">127 views</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 hover:bg-gray-50 transition-colors" data-mock="true">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-medium">
+                                    <span data-bind="post.author.initials">SM</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="font-medium text-primary" data-bind="post.author.username">SacramentoMark</span>
+                                        <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">WTB</span>
+                                        <span class="text-xs text-gray-500" data-bind="post.timestamp">4 hours ago</span>
+                                    </div>
+                                    <h3 class="text-lg font-medium text-primary mb-2 hover:text-accent cursor-pointer" data-bind="post.title">
+                                        Looking for AR-15 Lower Receiver - Sacramento Area
+                                    </h3>
+                                    <p class="text-gray-600 text-sm mb-2" data-bind="post.excerpt">
+                                        ISO a quality AR-15 lower receiver. Preferably Anderson, Aero Precision, or similar. Must be CA compliant and willing to meet at local FFL. Budget up to $200...
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                        <span class="flex items-center">
+                                            <i class="fas fa-map-marker-alt mr-1"></i>
+                                            <span data-bind="post.location">Sacramento, CA</span>
+                                        </span>
+                                        <span class="flex items-center">
+                                            <i class="fas fa-dollar-sign mr-1"></i>
+                                            <span data-bind="post.budget">Up to $200</span>
+                                        </span>
+                                        <span class="flex items-center">
+                                            <i class="fas fa-eye mr-1"></i>
+                                            <span data-bind="post.views">89 views</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 hover:bg-gray-50 transition-colors" data-mock="true">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-medium">
+                                    <span data-bind="post.author.initials">RF</span>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="font-medium text-primary" data-bind="post.author.username">RifleFan92</span>
+                                        <span class="text-xs bg-gray-500 text-white px-2 py-1 rounded">Discussion</span>
+                                        <span class="text-xs text-gray-500" data-bind="post.timestamp">6 hours ago</span>
+                                    </div>
+                                    <h3 class="text-lg font-medium text-primary mb-2 hover:text-accent cursor-pointer" data-bind="post.title">
+                                        New CA Assault Weapon Registration Questions
+                                    </h3>
+                                    <p class="text-gray-600 text-sm mb-2" data-bind="post.excerpt">
+                                        Has anyone had experience with the new registration process? I'm confused about some of the requirements and wondering if anyone can share their experience...
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                        <span class="flex items-center">
+                                            <i class="fas fa-comments mr-1"></i>
+                                            <span data-bind="post.replies">23 replies</span>
+                                        </span>
+                                        <span class="flex items-center">
+                                            <i class="fas fa-eye mr-1"></i>
+                                            <span data-bind="post.views">445 views</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+
+                    <div class="px-6 py-4 border-t border-gray-200 text-center">
+                        <a href="#" class="text-accent hover:text-emerald-700 font-medium">View More Activity →</a>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_COMPONENT: MainContent -->
+        </div>
+    </div>
+
+    <!-- @COMPONENT: Footer [legal disclaimers, links] -->
+    <footer class="bg-primary text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-bold mb-4">CalGuns Forum</h3>
+                    <p class="text-gray-300 mb-4">
+                        California's premier firearms community forum. Connecting responsible gun owners across the state while ensuring full compliance with all applicable laws.
+                    </p>
+                    <div class="bg-warning text-white p-4 rounded-lg">
+                        <p class="text-sm font-medium">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            LEGAL NOTICE: All firearm transactions must comply with California and federal laws. This platform facilitates connections only - all transfers must occur through licensed FFLs.
+                        </p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Community Guidelines</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FFL Directory</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Legal Resources</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">CA DOJ Firearms</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">ATF Guidelines</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Penal Code 30515</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Safe Handling</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Report Issues</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 CalGuns Forum. All rights reserved. | Age verification required (18+) | Licensed dealer transfers mandatory</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- @COMPONENT: AuthModals [login/register with age verification] -->
+    <!-- @STATE: showLoginModal:boolean = false -->
+    <!-- @STATE: showRegisterModal:boolean = false -->
+    <!-- @STATE: showCreatePostModal:boolean = false -->
+    
+    <script>
+    // TODO: Implement user authentication system with age verification
+    // TODO: Implement forum post creation and management
+    // TODO: Implement search and filtering functionality
+    // TODO: Implement moderation tools and reporting system
+    // TODO: Implement user profile management
+    // TODO: Implement real-time notifications
+    
+    (function() {
+        // Modal functionality for demonstration
+        const showModal = (modalType) => {
+            console.log(`Opening ${modalType} modal`);
+            // Implementation would show appropriate modal
+        };
+
+        // Search functionality placeholder
+        const initializeSearch = () => {
+            const searchInput = document.querySelector('input[type="text"]');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        console.log('Searching for:', e.target.value);
+                        // Implementation would perform search
+                    }
+                });
+            }
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeSearch();
+            
+            // Add click handlers for demonstration
+            document.querySelectorAll('[data-event]').forEach(element => {
+                const eventInfo = element.getAttribute('data-event');
+                if (eventInfo.startsWith('click:')) {
+                    const action = eventInfo.replace('click:', '');
+                    element.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        console.log(`Action triggered: ${action}`);
+                    });
+                }
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
